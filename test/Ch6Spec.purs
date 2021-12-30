@@ -20,7 +20,7 @@ spec = describe "Ch6 Spec" do
       preview _intSource "134" `shouldEqual` Just "134"
       preview _intSource "a35" `shouldEqual` Nothing
     it "follows laws (doesn't actually -- see comment here)" do
-      -- it doesn't actually, since the constructor works on anything showable
+      -- it doesn't actually, since the constructor works on any string.
       -- i'm not sure if I've done something wrong or if this just isn't a lawful prism
       -- examples say that this _does_ follow laws, but the laws in e.g.:
       -- https://en.wikibooks.org/wiki/Haskell/Lenses_and_functional_references#Laws
