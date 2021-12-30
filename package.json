@@ -1,0 +1,27 @@
+{
+  "name": "lenses-for-mere-mortal",
+  "version": "1.0.0",
+  "description": "Exercises from Lenses for Mere Mortals, updated to modern PureScript",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "purs-tidy": "^0.6.4"
+  },
+  "scripts": {
+    "test": "spago test",
+    "format": "./node_modules/purs-tidy/bin/index.js format-in-place **/*.purs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jisantuc/lenses-for-mere-mortals.git"
+  },
+  "author": "James Santucci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jisantuc/lenses-for-mere-mortals/issues"
+  },
+  "homepage": "https://github.com/jisantuc/lenses-for-mere-mortals#readme"
+}
