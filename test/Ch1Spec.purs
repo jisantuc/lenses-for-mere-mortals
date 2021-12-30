@@ -16,23 +16,24 @@ type TupleLens c = forall (a ∷ Type) (b ∷ Type) (p ∷ Type -> Type -> Type)
 
 spec :: Spec Unit
 spec = do
-  describe "Lens equivalences" do
-    describe "First element focuse" do
-      it "focuses first element" $ liftEffect $ quickCheck (\(x :: Tuple String Int) -> opticViewEquivalenceTest x _1 _first)
-      it "modifies first element" $ liftEffect $ quickCheck (\(x :: Tuple String Int) -> opticOverEquivalenceTest x _1 _first)
-  describe "Record update" do
-    it "replaces the object" $ (over _object (const 3) exampleRecord).object `shouldEqual` 3
-  describe "Composition" do
-    it "Stringifies extracts object from the second element" $
-      let
-        _adHoc = _2 <<< _object
-        replaced = set _2 (view _adHoc tupleRecord) tupleRecord
-      in
-        replaced `shouldEqual` Tuple "example" "Dawn"
-    describe "Nested tuple exercises" do
-      it "Replaces the first element" $ set1 5 fourLong `shouldEqual` tuple4 5 2 3 4
-      it "Replaces the second element" $ set2 "abcde" fourLong `shouldEqual` tuple4 1 "abcde" 3 4
-      it "Replaces the third element" $ set3 "foo" fourLong `shouldEqual` tuple4 1 2 "foo" 4
+  describe "Ch1 spec" do
+    describe "Lens equivalences" do
+      describe "First element focuse" do
+        it "focuses first element" $ liftEffect $ quickCheck (\(x :: Tuple String Int) -> opticViewEquivalenceTest x _1 _first)
+        it "modifies first element" $ liftEffect $ quickCheck (\(x :: Tuple String Int) -> opticOverEquivalenceTest x _1 _first)
+    describe "Record update" do
+      it "replaces the object" $ (over _object (const 3) exampleRecord).object `shouldEqual` 3
+    describe "Composition" do
+      it "Stringifies extracts object from the second element" $
+        let
+          _adHoc = _2 <<< _object
+          replaced = set _2 (view _adHoc tupleRecord) tupleRecord
+        in
+          replaced `shouldEqual` Tuple "example" "Dawn"
+      describe "Nested tuple exercises" do
+        it "Replaces the first element" $ set1 5 fourLong `shouldEqual` tuple4 5 2 3 4
+        it "Replaces the second element" $ set2 "abcde" fourLong `shouldEqual` tuple4 1 "abcde" 3 4
+        it "Replaces the third element" $ set3 "foo" fourLong `shouldEqual` tuple4 1 2 "foo" 4
 
 opticViewEquivalenceTest :: forall a b. Eq a => Show a => Tuple a b -> TupleLens b -> TupleLens b -> Result
 opticViewEquivalenceTest input l1 l2 = view l1 input === view l2 input

@@ -13,8 +13,9 @@ to generate this file without the comments in this block.
 { name = "my-project"
 , dependencies =
   [ "aff"
-  , "console"
   , "effect"
+  , "maybe"
+  , "ordered-collections"
   , "prelude"
   , "profunctor"
   , "profunctor-lenses"
@@ -22,6 +23,7 @@ to generate this file without the comments in this block.
   , "quickcheck"
   , "spec"
   , "spec-discovery"
+  , "spec-quickcheck"
   , "tuples"
   ]
 , packages = ./packages.dhall
